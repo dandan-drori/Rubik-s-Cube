@@ -1,9 +1,12 @@
+:root {
+  --tip-color: gold;
+}
+
 * {
   box-sizing: border-box;
 }
 
 .App {
-  text-align: center;
   overflow-x: hidden;
 }
 
@@ -83,10 +86,16 @@
 
 .welcome {
   background-color: #81A684;
+  background-image: url('./Images/home.png'), url('./Images/rubik.jpg');
+  background-repeat: no-repeat, no-repeat;
+  background-clip: border-box, border-box;
+  background-origin: border-box, border-box;
+  background-position: right, right;
+  background-size: cover, cover;
   padding: 3rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 85vh;
 }
 
 .header {
@@ -101,6 +110,7 @@
 
 .introduction-section {
   background-color: #0C7489;
+  padding: 3rem;
 }
 
 .guide {
@@ -167,4 +177,8 @@
 .step-body-wrapper {
   display: flex;
   justify-content: space-around;
+}
+
+.tip {
+  color: var(--tip-color);
 }
