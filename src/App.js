@@ -1,19 +1,27 @@
 import React from 'react';
 import './App.css';
-import Cube from './Components/Cube';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
 import Navbar from './Components/Navbar'
-import Welcome from './Components/Welcome';
-import Guide from './Components/Guide';
-import Introduction from './Components/Introduction';
+import Home from './Components/Home'
+import About from './Components/About'
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
+    <Router>
       <Navbar />
-      <Welcome />
-      <Introduction />
-      <Guide />
-    </div>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

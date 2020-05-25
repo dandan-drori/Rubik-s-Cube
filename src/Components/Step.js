@@ -1,16 +1,19 @@
 import React from 'react'
-import ScrambledCube from './ScrambledCube'
+// import CrossCube from './CrossCube'
 import ImgCaption from './ImgCaption'
 
-const Step = (props) => {
+const Step = ({stepHeaderText, stepBodyText, tip, figure, figureCaption}) => {
     return (
         <div className='step'>
-            <p style={{fontSize: 'calc(6px + 2vmin)', textDecoration: 'underline'}}>{props.stepHeaderText}</p>
-            <div className="step-body-wrapper">  
-                <p style={{fontSize: 'calc(4px + 2vmin)', textAlign: 'left', maxWidth: '60%'}}>{props.stepBodyText}</p>
-                <div className="cube-wrapper" style={{width:'10rem', height: '10rem', position: 'relative', top: '-4rem'}}>
-                    <ScrambledCube />
-                    <ImgCaption caption={'Figure 1'} /> 
+            <p className='step-header'>{stepHeaderText}</p>
+            <div className="step-body-wrapper">
+                <div className="step-body-text-wrapper">
+                    <p className='step-body-text'>{stepBodyText}</p>
+                    {tip}
+                </div>
+                <div className="cube-wrapper">
+                    {figure}
+                    <ImgCaption figureCaption={figureCaption} /> 
                 </div>
             </div>
         </div>
