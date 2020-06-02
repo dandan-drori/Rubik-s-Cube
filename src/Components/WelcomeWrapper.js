@@ -7,7 +7,6 @@ const WelcomeWrapper = () => {
         <div className="welcome-wrapper">
             <StartButton />
             <Cube 
-                className='welcome-cube'
                 colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow']}
                 colorsTwo={['red','red','red','red','red','red','red','red','red']}
                 colorsThree={['green','green','green','green','green','green','green','green','green']}

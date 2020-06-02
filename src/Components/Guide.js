@@ -5,9 +5,9 @@ import SubHeader from './SubHeader'
 import Cube from './Cube'
 
 const Guide = () => {
+    const [subHeaderText] = useState("Beginner's Method");
     const [beginner] = useState({
         stepOne: {
-            methodId: "beginner",
             stepHeaderText: "Step 1: Solving The Cross",
             stepBodyText: 
             `The first thing we want to do is choose a color out of the 6 colors on
@@ -83,8 +83,8 @@ const Guide = () => {
             stepBodyText: <span>Once the first two layers are solved, our next focus is the yellow face. 
                 The current state of the yellow face could only be 1 of 4 states: a dot (figure 4), L shape (figure 5),
                 a straight line (figure 6) or a cross (figure 7). If the current state is a cross, we move on to the
-                next step. If the state is L shape, we do this algorithm: (). If the state is a line, we do this algorithm:
-                (). If the state is a dot, we do both the L shape and the line algorithms, regardless of order.  
+                next step. If the state is L shape, we do this algorithm: <strong>(F U R U' R' F')</strong>. If the state is a line, we do this algorithm:
+                <strong> (F R U R' U' F')</strong>. If the state is a dot, we do both the L shape and the line algorithms, regardless of order.  
             </span>,
             tip: <p className='tip-wrapper'><span className="tip">Tip:</span><span className='tip-text'> Notice how the current
             state is not always exactly an L shape or a line and there might be a couple other pieces added to that shape.</span></p>,
@@ -127,40 +127,127 @@ const Guide = () => {
         },
         stepFive: {
             stepHeaderText: "Step 5: Solving The Yellow Face",
-            stepBodyText: <span>Once the first two layers are solved, our next focus is the yellow face. 
-                The current state of the yellow face could only be 1 of 4 states: a dot (figure 4), L shape (figure 5),
-                a straight line (figure 6) or a cross (figure 7). If the current state is a cross, we move on to the
-                next step. If the state is L shape, we do this algorithm: (). If the state is a line, we do this algorithm:
-                (). If the state is a dot, we do both the L shape and the line algorithms, regardless of order.  
-            </span>,
+            stepBodyText: <span>For this step, you only need one algorithm: <strong>
+                (R U R' U R U2 R')</strong> but we're going to use it a few times, each
+                time with the cube oriented differently. Doing this algorithm when the
+                cube is oriented like figure 8, will solve the yellow face, so our goal
+                is to get the yellow face to look like figure 8. If the yellow face looks
+                like figure 9, execute the algorithm once, do a <strong>(y2)</strong> - 
+                rotate the cube 180 degrees, and execute it again to solve the yellow face.
+                If the yellow face looks like figure 10, execute the algorithm twice to solve
+                the yellow face. If the yellow face looks like figure 11, execute
+                the algorithm once, do a <strong>(y)</strong> - rotate the cube 90 degrees clockwise, then
+                solve like figure 9. If the yellow face looks like figure 12, execute the
+                algorithm once, then solve like figure 9. If the yellow face looks like
+                figure 13, execute the algorithm once, do a <strong>(y')</strong> - rotate the cube 90 degrees
+                counter-clockwise, then execute the algorithm again. If the yellow face looks
+                like figure 14, do the algorithm once, do a <strong>(y')</strong> - rotate the cube 90 degrees
+                counter-clockwise, then solve like figure 9.</span>,
             tip: <p className='tip-wrapper'><span className="tip">Tip:</span><span className='tip-text'> Notice how the current
             state is not always exactly an L shape or a line and there might be a couple other pieces added to that shape.</span></p>,
+            figureCaption: '',
+            figure:
+            <div className='step-cubes step-5-cubes'>
+                <div>
+                    <Cube 
+                        colorsOne={['red','yellow','green','yellow','yellow','yellow','yellow','yellow','red']}
+                        colorsTwo={['green','blue','yellow','red','red','red','red','red','red']}
+                        colorsThree={['blue','green','yellow','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 8</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['orange','yellow','green','yellow','yellow','yellow','yellow','yellow','red']}
+                        colorsTwo={['red','green','green','red','red','red','red','red','red']}
+                        colorsThree={['yellow','orange','orange','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 9</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['orange','yellow','orange','yellow','yellow','yellow','red','yellow','red']}
+                        colorsTwo={['blue','red','green','red','red','red','red','red','red']}
+                        colorsThree={['yellow','blue','yellow','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 10</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['blue','yellow','yellow','yellow','yellow','yellow','red','yellow','yellow']}
+                        colorsTwo={['yellow','orange','green','red','red','red','red','red','red']}
+                        colorsThree={['orange','blue','blue','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 11</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['yellow','yellow','blue','yellow','yellow','yellow','green','yellow','yellow']}
+                        colorsTwo={['yellow','red','red','red','red','red','red','red','red']}
+                        colorsThree={['green','green','yellow','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 12</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['red','yellow','blue','yellow','yellow','yellow','orange','yellow','blue']}
+                        colorsTwo={['green','blue','yellow','red','red','red','red','red','red']}
+                        colorsThree={['orange','orange','red','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 13</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','green','yellow','blue']}
+                        colorsTwo={['yellow','orange','yellow','red','red','red','red','red','red']}
+                        colorsThree={['orange','green','blue','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 14</p>
+                </div>
+            </div>
+        },
+        stepSix: {
+            stepHeaderText: "Step 6: Solving The Top Layer's Corners",
+            stepBodyText: <span>Our goal in this step is to orient the top layer's corners.
+                To do that, we are going to use one algorithm: <strong>(R' F R' B2 R F' R' B2 R2)</strong>.
+                Executing this algorithm when the cube looks like figures 15 and 16 (showing both sides),
+                will solve the said corners. If the cube does not look like figures 15 and 16, we are
+                going to look for a set of 'headlights' (figure 17), position the cube so that the
+                'headlights' are facing away from us (at the back) and execute the algorithm. That will
+                get the cube to look like figures 15 and 16, and then we can solve it by using the
+                algorithm once again. But what if I can't find a set of headlights? In that case, 
+                we're going to execute the algorithm once - that will give us a set of headlights,
+                then put them at the back, execute the algorithm, and then execute it again. 
+            </span>,
+            tip: <p className='tip-wrapper'><span className="tip">Tip:</span> Starting out, we recommend
+            trying to solve the cross when it is facing up.</p>,
             figureCaption: '',
             figure:
             <div className='step-cubes'>
                 <div>
                     <Cube 
-                        colorsOne={['red','red','green','orange','yellow','blue','orange','green','yellow']}
-                        colorsTwo={['green','yellow','orange','red','red','red','red','red','red']}
-                        colorsThree={['blue','yellow','yellow','green','green','green','green','green','green']}
+                        colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow']}
+                        colorsTwo={['blue','red','red','red','red','red','red','red','red']}
+                        colorsThree={['green','green','blue','green','green','green','green','green','green']}
                     />
-                    <p className="img-caption">Figure 4</p>
+                    <p className="img-caption">Figure 15</p>
                 </div>
                 <div>
                     <Cube 
-                        colorsOne={['red','yellow','green','yellow','yellow','blue','orange','green','yellow']}
-                        colorsTwo={['green','yellow','orange','red','red','red','red','red','red']}
-                        colorsThree={['blue','yellow','yellow','green','green','green','green','green','green']}
+                        colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow']}
+                        colorsTwo={['red','orange','green','orange','orange','orange','orange','orange','orange']}
+                        colorsThree={['orange','blue','orange','blue','blue','blue','blue','blue','blue']}
                     />
-                    <p className="img-caption">Figure 5</p>
+                    <p className="img-caption">Figure 16</p>
                 </div>
                 <div>
                     <Cube 
-                        colorsOne={['red','red','green','yellow','yellow','yellow','orange','green','yellow']}
-                        colorsTwo={['green','yellow','orange','red','red','red','red','red','red']}
-                        colorsThree={['blue','orange','yellow','green','green','green','green','green','green']}
+                        colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow']}
+                        colorsTwo={['red','orange','green','orange','orange','orange','orange','orange','orange']}
+                        colorsThree={['orange','blue','orange','blue','blue','blue','blue','blue','blue']}
+                        border='5px solid red'
                     />
-                    <p className="img-caption">Figure 6</p>
+                    <p className="img-caption">Figure 17</p>
                 </div>
                 <div>
                     <Cube 
@@ -168,15 +255,64 @@ const Guide = () => {
                         colorsTwo={['green','blue','orange','red','red','red','red','red','red']}
                         colorsThree={['blue','green','yellow','green','green','green','green','green','green']}
                     />
-                    <p className="img-caption">Figure 7</p>
+                    <p className="img-caption">Figure 18</p>
+                </div>
+            </div>
+        },
+        stepSeven: {
+            stepHeaderText: "Step 7: Solving The Top Layer's Edges",
+            stepBodyText: <span>In the final step, we are going to solve the remaining misoriented edges.
+                To do this, we are going to look for a 3x3 block (figure 21), and but it at the back.
+                We'll use two similar algorithms: <strong>(F2 U L R' F2 R L' U' F2)</strong> and <strong>(F2 U' R' L F2 L' R U F2)</strong>.
+                If the top layer looks like figure 19, execute the first algorithm. If the top layer
+                looks like figure 20, execute the second algorithm. If we can't find a 3x3 block, we'll
+                execute either one of the algorithms for this step, and that will create the 3x3 block
+                for us, then we can solve regularly.
+            </span>,
+            tip: <p className='tip-wrapper'><span className="tip">Tip:</span> Starting out, we recommend
+            trying to solve the cross when it is facing up.</p>,
+            figureCaption: '',
+            figure:
+            <div className='step-cubes'>
+                <div>
+                    <Cube 
+                        colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow']}
+                        colorsTwo={['red','blue','red','red','red','red','red','red','red']}
+                        colorsThree={['green','red','green','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 19</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow']}
+                        colorsTwo={['red','green','red','red','red','red','red','red','red']}
+                        colorsThree={['green','blue','green','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 20</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow','yellow']}
+                        colorsTwo={['orange','red','orange','orange','orange','orange','orange','orange','orange']}
+                        colorsThree={['blue','blue','blue','blue','blue','blue','blue','blue','blue']}
+                        border='5px solid red'
+                    />
+                    <p className="img-caption">Figure 21</p>
+                </div>
+                <div>
+                    <Cube 
+                        colorsOne={['red','yellow','green','yellow','yellow','yellow','orange','yellow','yellow']}
+                        colorsTwo={['green','blue','orange','red','red','red','red','red','red']}
+                        colorsThree={['blue','green','yellow','green','green','green','green','green','green']}
+                    />
+                    <p className="img-caption">Figure 22</p>
                 </div>
             </div>
         }
     })
-    const [subHeaderText] = useState("Beginner's Method");
     return (
         <div className='guide'>
-            <Header headerText={'Solving Guide'}/>
+            <Header headerText={'Solving Guide'} />
             <SubHeader subHeaderText={subHeaderText}/>
             <Method 
               methodId={beginner.stepOne.methodId}
@@ -205,14 +341,19 @@ const Guide = () => {
               tipFive={beginner.stepFive.tip} 
               figureFive={beginner.stepFive.figure} 
               figureCaptionFive={beginner.stepFive.figureCaption}
+              stepHeaderTextSix={beginner.stepSix.stepHeaderText}
+              stepBodyTextSix={beginner.stepSix.stepBodyText} 
+              tipSix={beginner.stepSix.tip} 
+              figureSix={beginner.stepSix.figure} 
+              figureCaptionSix={beginner.stepSix.figureCaption}
+              stepHeaderTextSeven={beginner.stepSeven.stepHeaderText}
+              stepBodyTextSeven={beginner.stepSeven.stepBodyText} 
+              tipSeven={beginner.stepSeven.tip} 
+              figureSeven={beginner.stepSeven.figure} 
+              figureCaptionSeven={beginner.stepSeven.figureCaption}
             />
         </div>
     )
 }
 
 export default Guide
-
-// <BeginnersMethod />
-//             <CFOP />
-//             <ZZ />
-//             <Roux />

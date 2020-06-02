@@ -1,10 +1,11 @@
 import React from 'react'
 import Header from './Header'
 import SubHeader from './SubHeader'
+import {Link} from 'react-router-dom'
 
 const Introduction = () => {
     return (
-        <div className='introduction-section'>
+        <div className='introduction-section' id='introduction-section'>
             <Header headerText={'Introduction'}/>
             <SubHeader subHeaderText={'Basic Rules'}/>
             <p className='intro-aspire'>We should aspire to rotate the cube as fewer times as possible in order to save time and prevent confusion and misorientation.
@@ -36,6 +37,8 @@ const Introduction = () => {
             A predefined set of 3 or more moves is called an Algorithm. An algorithm can look something like: (R U R' U'). This algorithm is called the 'Sexy Move'.
             Algorithms carry a big advantage - they are easy to memorize. Once they are memorized they can be executed very quickly without the need to think of the individual moves. 
             </p>
+            <p className="thats-it">That's it!</p>
+            <p className="youre-ready">You're ready to <Link className="link-custom-style" to="/solving-methods/beginner's-method">start learning now</Link>.</p>
         </div>
     )
 }

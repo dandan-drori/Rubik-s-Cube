@@ -10,6 +10,7 @@ const Welcome = () => {
             <Header headerText={'Welcome to EasyRubik!'}/>
             <Intro />
             <WelcomeWrapper />
+            <p className='water-mark'>EasyRubik</p>
         </div>
     )
 }

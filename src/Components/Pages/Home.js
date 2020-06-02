@@ -1,14 +1,12 @@
 import React from 'react'
-import Welcome from './Welcome'
-import Introduction from './Introduction'
-import Guide from './Guide'
+import Welcome from '../Welcome'
+import Introduction from '../Introduction'
 
 const Home = () => {
     return (
       <div className='home'>
         <Welcome />
         <Introduction />
-        <Guide />
       </div>
     );
   }

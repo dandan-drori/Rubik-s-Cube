@@ -2,9 +2,9 @@ import React from 'react'
 // import CrossCube from './CrossCube'
 import ImgCaption from './ImgCaption'
 
-const Step = ({stepHeaderText, stepBodyText, tip, figure, figureCaption}) => {
+const Step = ({stepHeaderText, stepBodyText, tip, figure, figureCaption, noneOrBlock}) => {
     return (
-        <div className='step'>
+        <div className='step' style={{display: noneOrBlock}}>
             <p className='step-header'>{stepHeaderText}</p>
             <div className="step-body-wrapper">
                 <div className="step-body-text-wrapper">
